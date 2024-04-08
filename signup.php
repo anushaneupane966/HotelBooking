@@ -28,7 +28,7 @@
 
       if ($conn->query($sql) === TRUE) {
         // Redirect to login page after successful registration
-        header("Location: login.php");
+        header("Location: index.html");
         exit();
     } else {
         echo "<p>Error: " . $sql . "<br>" . $conn->error . "</p>";
