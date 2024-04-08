@@ -4,7 +4,7 @@
       // Establish database connection
       $servername = "localhost";
       $username = "astro"; 
-      $password = "serena562181"; 
+      $password = "Serena562181"; 
       $dbname = "rdbs";
 
       $conn = new mysqli($servername, $username, $password, $dbname);
