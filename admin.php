@@ -3,8 +3,8 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Establish database connection
       $servername = "localhost";
-      $username = "TableBooking"; 
-      $password = "TableBooking"; 
+      $username = "astro"; 
+      $password = "serena562181"; 
       $dbname = "rdbs";
 
       $conn = new mysqli($servername, $username, $password, $dbname);
