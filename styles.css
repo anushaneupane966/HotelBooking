@@ -1,83 +1,55 @@
+/* styles.css */
+
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f4f4f4;
   }
   
-  .signup-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-    width: 300px;
+  header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
     text-align: center;
   }
   
-  .signup-form {
-    text-align: left;
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
   }
   
-  h2 {
-    color:#aa18e4;
-    margin-bottom: 30px;
-    padding-left: 35px;
-    padding-bottom: 15px;
+  nav ul li {
+    display: inline;
+    margin: 0 10px;
   }
   
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    color: #555555;
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #aa18e4;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #aa18e4;
-  }
-  
-  .login-link {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555555;
-    padding-left: 40px;
-  }
-  
-  .login-link a {
-    color: #aa18e4;
+  nav ul li a {
     text-decoration: none;
+    color: #007bff;
   }
   
-  .login-link a:hover {
-    text-decoration: underline;
+  main {
+    padding: 20px;
+  }
+  
+  section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  footer {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
   
