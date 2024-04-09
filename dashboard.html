@@ -45,13 +45,29 @@
         h1 {
             color: #000000;
         }
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <div id="sidebar">
         <ul>
             <li><a href="#">Admins</a></li>
-            <li><a href="#">Manage Reservations</a></li>
+            <li><a href="manage.php">Manage Reservations</a></li>
             <li><a href="#">View Reservations</a></li>
             <li><a href="#">Edit Reservation</a></li>
             <li><a href="#">User Feedbacks</a></li>
@@ -59,7 +75,99 @@
     </div>
     <div id="content">
         <h1>Welcome to Admin Dashboard</h1>
-        <!-- Your content goes here -->
+        <div class="button-container">
+            <button class="button" id="openForm">Book A Table</button>
+        </div>
+        
+        <div id="bookingFormPopup" class="popup">
+            <form action="book.php" method="post">
+                <input type="text" name="name" placeholder="Name" required><br><br>
+                <input type="email" name="email" placeholder="Email" required><br><br>
+                <input type="tel" name="phone" placeholder="Phone" required><br><br>
+                <input type="date" name="date" required><br><br>
+                <input type="time" name="time" required><br><br>
+                <input type="number" name="num_guests" placeholder="Number of Guests" required><br><br>
+                <input type="hidden" name="book_table" value="1">
+                <button class="button" type="submit">Book A Table</button>
+            </form>
+        </div>
+        
+        <script>
+            // Get the button that opens the form
+            var openFormButton = document.getElementById("openForm");
+            
+            // Get the popup form
+            var bookingFormPopup = document.getElementById("bookingFormPopup");
+            
+            // When the user clicks the button, open the popup form
+            openFormButton.onclick = function() {
+                bookingFormPopup.style.display = "block";
+            }
+            
+            // When the user clicks anywhere outside of the popup form, close it
+            window.onclick = function(event) {
+                if (event.target == bookingFormPopup) {
+                    bookingFormPopup.style.display = "none";
+                }
+            }
+        </script>
+        
+        <style>
+            .popup {
+                display: none;
+                position: fixed;
+                z-index: 9999;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.4);
+                padding-top: 60px;
+            }
+
+            .popup form {
+                background-color: #fff;
+                margin: 5% auto;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                width: 80%;
+                max-width: 400px;
+                text-align: center;
+            }
+
+            .popup .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                color: #999;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        
+            .popup .close:hover,
+            .popup .close:focus {
+                color: #666;
+            }
+
+            .button {
+                background-color: #4285f4;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                text-transform: uppercase;
+                transition: background-color 0.3s ease;
+            }
+        
+            .button:hover {
+                background-color: #3367d6;
+            }
+        </style>
+        
+        
     </div>
 </body>
 </html>
