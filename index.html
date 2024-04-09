@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="main.css">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="login-container">
-    <form action="login.php" method="POST" class="login-form">
-      <h2>Welcome Back!</h2>
-      <div class="form-group">
+    <h2>Login</h2>
+    <form action="dashboard.html">
+      <div class="input-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required>
       </div>
-      <div class="form-group">
+      <div class="input-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
       </div>
       <button type="submit">Login</button>
-      <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
-      <p class="signup-link"> <a href="admin.html">Login as Admin</a></p>
     </form>
   </div>
 </body>
