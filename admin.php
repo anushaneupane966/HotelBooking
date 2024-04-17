@@ -31,9 +31,11 @@
           header("Location: dashboard.php");
           exit();
       } else {
-          // Username and password do not match
-          echo "<p class='error'>Invalid username or password</p>";
-      }
+          // Invalid username or password, display an error message
+            echo "<script>alert('Invalid username or password');</script>";
+            // Redirect the user back to index.html
+            echo "<script>window.location.href = 'index.html?error=Invalid%20username%20or%20password';</script>";
+        }
 
       $conn->close();
   }
