@@ -4,152 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="customerDashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-    /* General styles */
-    body {
-        overflow: hidden;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f2f5;
-    }
-
-    .wrapper {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 200px;
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-    }
-
-    .sidebar h3 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .sidebar-menu {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sidebar-menu li {
-      padding: 10px;
-      border-bottom: 1px solid #555;
-    }
-
-    .sidebar-menu li a {
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .sidebar-menu li a i {
-      margin-right: 10px;
-    }
-
-    .sidebar-menu li:hover {
-      background-color: #00ff2a;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: url('bbg.jpg'); /* Background image related to restaurant */
-      
-      background-size: cover;
-      background-position: center;
-    }
-
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.5);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .overlay h1 {
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .button-container {
-      text-align: center;
-      margin-top: 15px;
-    }
-
-    .button {
-     padding :5px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 26px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      text-decoration: none;
-    }
-
-    .button:hover {
-      background-color: #45a049;
-    }
-
-    @media (max-width: 768px) {
-      .wrapper {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      .main-content {
-        padding: 20px 0;
-      }
-    }
-    h1{
-       text-align: center;
-       text-decoration: double;
-    }
-    
-  </style>
 </head>
 <body>
-    <h1>Welcome to Restaurant</h1>
-  <div class="wrapper">
-    <div class="sidebar">
-      <h3>Customer Dashboard</h3>
-      <ul class="sidebar-menu">
-        <li><a href="customerDashboard.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-        <li><a href="Menu.html"><i class="fa fa-bars" aria-hidden="true"></i>Menu</a></li>
-        <li><a href="Gallery.html"><i class="fa fa-picture-o" aria-hidden="true"></i></i> Gallery</a></li>
-        <li><a href="My_bookings.html"><i class="fas fa-calendar-alt"></i> My bookings</a></li>
-        <li><a href="Contact.html"><i class="fas fa-calendar-alt"></i>Contact US</a></li>
-        
-        <!-- Add more menu items based on the provided content -->
-      </ul>
-    </div>
-    <div class="main-content">
-      <div class="overlay">
-        
-        <div class="button-container">
-          <a class="button" href="add_reservation.html">Book a table</a>
-          
-        </div>
-        <!-- Add popup forms for reservation actions -->
-        <div id="addReservationFormPopup" class="popup"></div>
-        <div id="deleteReservationConfirmation" class="popup"></div>
+<div class="wrapper">
+  <div class="sidebar">
+    <h3>Dashboard</h3>
+    <ul class="sidebar-menu">
+
+      <li><a href="customerDashboard.html"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>Dashboard</a></li>
+      <li><a href="Menu.html"><i class="fas fa-utensils" aria-hidden="true"></i>Menu</a></li>
+      <li><a href="Gallery.html"><i class="fas fa-images" aria-hidden="true"></i></i> Gallery</a></li>
+      <li><a href="My_bookings.html"><i class="fas fa-calendar-alt"></i> My bookings</a></li>
+      <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact US</a></li>
+      <li><a href="aboutUs.html"><i class="fas fa-info-circle"></i>About Us</a></li>
+      <!-- Add more menu items based on the provided content -->
+    </ul>
+  </div>
+  <div class="animated-text">
+    <span>W</span>
+    <span>e</span>
+    <span>l</span>
+    <span>c</span>
+    <span>o</span>
+    <span>m</span>
+    <span>e</span>
+    <span> </span>
+    <span>t</span>
+    <span>o</span>
+    <span> </span>
+    <span>R</span>
+    <span>e</span>
+    <span>s</span>
+    <span>t</span>
+    <span>a</span>
+    <span>u</span>
+    <span>r</span>
+    <span>a</span>
+    <span>n</span>
+    <span>t</span>
+  </div>
+  <div class="main-content">
+    <div class="overlay">
+      <div class="button-container">
+        <a class="button" href="bookTable.html">Book a table</a>
       </div>
+      <!-- Add popup forms for reservation actions -->
+      <div id="addReservationFormPopup" class="popup"></div>
+      <div id="deleteReservationConfirmation" class="popup"></div>
     </div>
   </div>
+</div>
 </body>
 </html>
