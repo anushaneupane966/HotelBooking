@@ -1,0 +1,135 @@
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+  }
+  
+  .wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: large;
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-menu li {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+  }
+  
+  .sidebar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: larger;
+  }
+  
+  .sidebar-menu li a i {
+    margin-right: 10px;
+  }
+  
+  .sidebar-menu li:hover {
+    background-color: #00ff2a;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('bbg.jpg'); /* Background image related to restaurant */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .overlay {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .animated-text {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 50px;
+    text-align: center; /* Center the text horizontally */
+    position: absolute;
+    top: 10%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bolder;
+  }  
+  
+  .animated-text span {
+    display: inline-block;
+    opacity: 0;
+    animation: revealText 1s forwards;
+  }
+  
+  @keyframes revealText {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .button {
+    padding: 5px;
+    background-color: #00ff08;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: #4c05ff;
+  }
+  
+  @media (max-width: 768px) {
+    .wrapper {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+    }
+  
+    .main-content {
+      padding: 20px 0;
+    }
+  }

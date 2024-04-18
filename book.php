@@ -39,18 +39,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['book_table'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Confirmation</title>
-    <style>
-        /* Add your CSS styles for the confirmation popup */
-    </style>
+    <link rel="stylesheet" href="confirmBook.css">
 </head>
 <body>
-    <div class="popup">
+    <div class="popup" id="bookingConfirmation">
         <div class="popup-content">
             <h2>Booking Confirmation</h2>
             <p>Your booking has been successfully submitted!</p>
-            <a href="dashboard.html">Back to Dashboard</a>
+            <a href="customerDashboard.html">Back to Dashboard</a>
         </div>
     </div>
+
+    <script>
+        // Function to show the popup
+        document.addEventListener('DOMContentLoaded', function() {
+            var popup = document.getElementById("bookingConfirmation");
+            popup.style.display = "block";
+        });
+    </script>
 </body>
 </html>
 <?php

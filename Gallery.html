@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gallery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #7c7c7c;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  
+    
+    a:hover {
+      background-color: rgb(0, 255, 136);
+    }
+    
+    /* Sidebar styles */
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .sidebar {
+      width: 240px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    
+    .sidebar h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: large;
+    }
+    
+    .sidebar-menu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-menu li {
+      padding: 10px;
+      border-bottom: 1px solid #555;
+    }
+    
+    .sidebar-menu li a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: larger;
+    }
+    
+    .sidebar-menu li a i {
+      margin-right: 10px;
+    }
+    
+    .sidebar-menu li:hover {
+      background-color: #00ff2a;
+    }
+
+    .main-content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+    
+      .sidebar {
+        width: 100%;
+      }
+    
+      .main-content {
+        padding: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h3>Gallery</h3>
+      <ul class="sidebar-menu">
+
+        <li><a href="customerDashboard.html"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>Dashboard</a></li>
+        <li><a href="Menu.html"><i class="fas fa-utensils" aria-hidden="true"></i>Menu</a></li>
+        <li><a href="Gallery.html"><i class="fas fa-images" aria-hidden="true"></i></i> Gallery</a></li>
+        <li><a href="My_bookings.html"><i class="fas fa-calendar-alt"></i> My bookings</a></li>
+        <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact US</a></li>
+        <li><a href="aboutUs.html"><i class="fas fa-info-circle"></i>About Us</a></li>
+        <!-- Add more menu items based on the provided content -->
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="container">
+        <h2>Gallery</h2>
+        <p>Explore our restaurant through our gallery of images showcasing our delicious dishes, cozy ambiance, and happy customers.</p>
+        
+        
+        <div class="gallery">
+          <img src="burger.jpg" alt="Burger">
+          <img src="food1.jpg" alt="Food 1">
+          <img src="food2.jpg" alt="Food 2">
+          <img src="food3.jpg" alt="Food 3">
+          <img src="food4.jpg" alt="Food 4">
+          <img src="food5.jpg" alt="Food 5">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

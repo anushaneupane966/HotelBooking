@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Menu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #414447;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .menu-item {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-item img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .menu-item h3 {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .menu-item p {
+      color: #666;
+    }
+    
+    /* Sidebar styles */
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .sidebar {
+      width: 240px;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    
+    .sidebar h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: large;
+    }
+    
+    .sidebar-menu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .sidebar-menu li {
+      padding: 10px;
+      border-bottom: 1px solid #555;
+    }
+    
+    .sidebar-menu li a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: larger;
+    }
+    
+    .sidebar-menu li a i {
+      margin-right: 10px;
+    }
+    
+    .sidebar-menu li:hover {
+      background-color: #00ff2a;
+    }
+
+    .main-content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+    
+      .sidebar {
+        width: 100%;
+      }
+    
+      .main-content {
+        padding: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <ul class="sidebar-menu">
+
+        <li><a href="customerDashboard.html"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>Dashboard</a></li>
+        <li><a href="Menu.html"><i class="fas fa-utensils" aria-hidden="true"></i>Menu</a></li>
+        <li><a href="Gallery.html"><i class="fas fa-images" aria-hidden="true"></i></i> Gallery</a></li>
+        <li><a href="My_bookings.html"><i class="fas fa-calendar-alt"></i> My bookings</a></li>
+        <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact US</a></li>
+        <li><a href="aboutUs.html"><i class="fas fa-info-circle"></i>About Us</a></li>
+        <!-- Add more menu items based on the provided content -->
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="container">
+        <h2>Menu</h2>
+        <div class="menu-items">
+          <div class="menu-item">
+            <img src="burger1.jpg" alt="Burger">
+            <h3>Burger</h3>
+            <p>A classic beef burger with lettuce, tomato, and cheese.</p>
+          </div>
+          <div class="menu-item">
+            <img src="pizza.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+            <p>Freshly baked pizza with a variety of toppings to choose from.</p>
+          </div>
+          <div class="menu-item">
+            <img src="pasta.jpg" alt="Pasta">
+            <h3>Pasta</h3>
+            <p>Delicious pasta cooked al dente with your choice of sauce.</p>
+          </div>
+          <div class="menu-item">
+            <img src="salad.jpg" alt="Salad">
+            <h3>Salad</h3>
+            <p>Fresh salad made with organic greens and a tangy dressing.</p>
+          </div>
+          <!-- Add more menu items as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

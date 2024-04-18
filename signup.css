@@ -1,0 +1,99 @@
+/* main-signup.css */
+
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Apply styles to the body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f7f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Style the signup container */
+  .signup-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 350px;
+  }
+  
+  /* Style the signup form */
+  .signup-form {
+    text-align: center;
+  }
+  
+  /* Style headings */
+  h2 {
+    color: #aa18e4; /* Orange */
+    margin-bottom: 30px;
+    padding-left: 25px;
+    padding-bottom: 15px;
+  }
+  
+  /* Style form groups */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Style labels */
+  label {
+    color: #333333; /* Dark Grey */
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Style input fields */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Style the signup button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #aa18e4; /* Blue */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Change button color on hover */
+  button[type="submit"]:hover {
+    background-color: #aa18e4; /* Lighter Blue */
+  }
+  
+  /* Style the login link */
+  .login-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  /* Style the login link anchor */
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Change login link color on hover */
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
