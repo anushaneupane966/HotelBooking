@@ -32,6 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+        echo "<script>alert('Invalid email format. Email must be in the format something@example.com.');
+              window.location.href = 'signup.html';</script>";
+        exit();
+    }
+
     // Sanitize data
     $username = mysqli_real_escape_string($conn, $username);
     $email = mysqli_real_escape_string($conn, $email);
