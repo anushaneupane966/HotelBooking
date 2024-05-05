@@ -139,8 +139,7 @@
         <li><a href="view_reservation_list.php"><i class="fas fa-calendar-alt"></i> View Reservation List</a></li>
         <li><a href="access_feedback.html"><i class="fas fa-comment-alt"></i> Access Feedback</a></li>
         <div class="Logout">
-          <li><a href="delete_reservation.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-
+          <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </div>
         <!-- Add more menu items based on the provided content -->
       </ul>
@@ -148,20 +147,55 @@
     <div class="main-content">
       <div class="feedback-container">
         <h1 class="feedback-heading">Access Feedback Page</h1>
-        <ul class="feedback-list">
-          <li class="feedback-item">
-            <p>Feedback 1</p>
-          </li>
-          <li class="feedback-item">
-            <p>Feedback 2</p>
-          </li>
-          <li class="feedback-item">
-            <p>Feedback 3</p>
-          </li>
-          <!-- Add more feedback items as needed -->
+        <ul class="feedback-list" id="feedback-list">
+          <!-- Feedback items will be added here -->
         </ul>
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetchFeedback();
+    });
+
+    function fetchFeedback() {
+      fetch("fetch_feedback.php")
+        .then(response => response.json())
+        .then(data => {
+          const feedbackList = document.getElementById("feedback-list");
+          if (data.length > 0) {
+            data.forEach(item => {
+              const li = document.createElement("li");
+              li.classList.add("feedback-item");
+              li.innerHTML = `
+                <p><strong>Name:</strong> ${item.name}</p>
+                <p><strong>Email:</strong> ${item.email}</p>
+                <p><strong>Feedback:</strong> ${item.feedback}</p>
+              `;
+              feedbackList.appendChild(li);
+            });
+          } else {
+            const li = document.createElement("li");
+            li.classList.add("feedback-item");
+            li.innerHTML = "<p>No feedback yet.</p>";
+            feedbackList.appendChild(li);
+          }
+        })
+        .catch(error => console.error("Error fetching feedback:", error));
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        const logoutConfirmed = confirm("Are you sure you want to logout?");
+        if (logoutConfirmed) {
+          window.location.href = "admin.html";
+        }
+      });
+    });
+  </script>
 </body>
 </html>

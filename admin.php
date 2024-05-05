@@ -34,7 +34,7 @@
           // Invalid username or password, display an error message
             echo "<script>alert('Invalid username or password');</script>";
             // Redirect the user back to index.html
-            echo "<script>window.location.href = 'index.html?error=Invalid%20username%20or%20password';</script>";
+            echo "<script>window.location.href = 'admin.html?error=Invalid%20username%20or%20password';</script>";
         }
 
       $conn->close();

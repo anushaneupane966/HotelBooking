@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>View Reservation List</title>
+  <title>View Reservation History</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     /* General styles */
@@ -84,7 +84,7 @@
     }
 
     .content-container {
-      max-width: 800px; /* Adjusted for wider content */
+      max-width: 900px; /* Adjusted for wider content */
       background-color: #fff;
       padding: 20px;
       border-radius: 10px;
@@ -107,6 +107,7 @@
       border-bottom: 1px solid #ddd;
       padding: 12px;
       text-align: left;
+      color: white;
     }
 
     .reservation-table th {
@@ -137,14 +138,14 @@
         <li><a href="view_reservation_list.php"><i class="fas fa-calendar-alt"></i> View Reservation List</a></li>
         <li><a href="access_feedback.html"><i class="fas fa-comment-alt"></i> Access Feedback</a></li>
         <div class="Logout">
-        <li><a href="delete_reservation.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
       </div>
         <!-- Add more menu items based on the provided content -->
       </ul>
     </div>
     <div class="main-content">
       <div class="content-container">
-        <h1>View Reservation List Page</h1>
+        <h1>View Reservation History Page</h1>
         <table class="reservation-table">
           <thead>
             <tr>
@@ -172,18 +173,18 @@
             }
             
             // Fetch reservation data from database
-            $sql = "SELECT id, guest_name, reservation_date, reservation_time, num_guests FROM reservations_details";
+            $sql = "SELECT id, name, date, time, num_guests FROM reservations WHERE date < CURDATE()";
             $result = $conn->query($sql);
             
             // Check if there are any reservations
-            if ($result->num_rows > 0) {
+            if ($result !== false && $result->num_rows > 0) {
                 // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["id"] . "</td>";
-                    echo "<td>" . $row["guest_name"] . "</td>";
-                    echo "<td>" . $row["reservation_date"] . "</td>";
-                    echo "<td>" . $row["reservation_time"] . "</td>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . date('F j, Y', strtotime($row["date"])) . "</td>";
+                    echo "<td>" . date('g:i A', strtotime($row["time"])) . "</td>";
                     echo "<td>" . $row["num_guests"] . "</td>";
                     echo "</tr>";
                 }
@@ -199,5 +200,17 @@
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        const logoutConfirmed = confirm("Are you sure you want to logout?");
+        if (logoutConfirmed) {
+          window.location.href = "admin.html";
+        }
+      });
+    });
+  </script>
 </body>
 </html>

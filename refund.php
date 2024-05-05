@@ -118,6 +118,24 @@
       background-color: #45a049;
     }
 
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
     @media (max-width: 768px) {
       .wrapper {
         flex-direction: column;
@@ -156,7 +174,56 @@
         </div>
         <!-- Placeholder for displaying canceled/refunded reservation info -->
         <div id="reservationInfo">
-          <p>No reservations canceled or refunded yet.</p>
+          <table id="cancelReservationTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Number of Guests</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                // Database configuration
+                $servername = "localhost";
+                $username = "astro";
+                $password = "Serena562181";
+                $database = "rdbs";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $database);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // SQL to fetch canceled reservations
+                $sql_fetch = "SELECT * FROM cancelReservation";
+                $result_fetch = $conn->query($sql_fetch);
+
+                if ($result_fetch->num_rows > 0) {
+                    // Output data of each row
+                    while($row = $result_fetch->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>".$row['id']."</td>";
+                        echo "<td>".$row['name']."</td>";
+                        echo "<td>".$row['date']."</td>";
+                        echo "<td>".$row['time']."</td>";
+                        echo "<td>".$row['num_guests']."</td>";
+                        echo "<td>".$row['status']."</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='6'>No reservations canceled yet.</td></tr>";
+                }
+                $conn->close();
+              ?>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -165,12 +232,36 @@
   <script>
     // Function to cancel reservation
     function cancelReservation() {
-      // Implement cancel reservation functionality here
+      var id = prompt("Please enter reservation ID to cancel:");
+      if (id != null) {
+        if (confirm("Are you sure you want to cancel this reservation?")) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("reservationInfo").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "cancelReservation.php?id=" + id, true);
+          xhttp.send();
+        }
+      }
     }
 
     // Function to refund reservation
     function refundReservation() {
-      // Implement refund reservation functionality here
+      var id = prompt("Please enter reservation ID to refund:");
+      if (id != null) {
+        if (confirm("Are you sure you want to refund this reservation?")) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("reservationInfo").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("POST", "cancelReservation.php?id=" + id, true);
+          xhttp.send();
+        }
+      }
     }
   </script>
 </body>

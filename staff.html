@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+    }
+
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Updated styles for the sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50; /* Dark blue */
+      color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow */
+      border-radius: 10px; /* Rounded corners */
+    }
+
+    .sidebar h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px; /* Increase font size */
+      color: #fff; /* White text color */
+    }
+
+    .sidebar-menu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-menu li {
+      padding: 15px 0;
+      border-bottom: 1px solid #46637f; /* Darker blue */
+    }
+
+    .sidebar-menu li a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: 18px; /* Adjust font size */
+      transition: color 0.3s; /* Smooth color transition */
+    }
+
+    .sidebar-menu li a i {
+      margin-right: 10px;
+      font-size: 20px; /* Adjust icon size */
+    }
+
+    .sidebar-menu li:hover {
+      background-color: #46637f; /* Darker blue on hover */
+    }
+
+    .sidebar-menu li:hover a {
+      color: #00bcd4; /* Cyan text color on hover */
+    }
+
+    .sidebar-menu li:last-child {
+      border-bottom: none; /* Remove border from last item */
+    }
+   
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('1.jpg'); /* Background image related to staff */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .overlay h1 {
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      margin: 5px;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .staff-info {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      color: #333;
+    }
+
+    .staff-info h2 {
+      margin-bottom: 10px;
+    }
+
+    .staff-info p {
+      margin-bottom: 5px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .main-content {
+        padding: 20px 0;
+        
+      }
+    }
+p{
+  color: white;
+}
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="sidebar">
+      <h3>Staff Management</h3>
+      <ul class="sidebar-menu">
+        <li><a href="AdminDashboard.html"><i class="fa fa-home" aria-hidden="true"></i> Home </a></li>
+        <li><a href="view_reservation_list.php"><i class="fas fa-calendar-alt"></i> View Reservation List</a></li>
+        <li><a href="access_feedback.html"><i class="fas fa-comment-alt"></i> Access Feedback</a></li>
+        <div class="Logout">
+          <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </div>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="overlay">
+        <h1>Staff Management</h1>
+        <div class="button-container">
+          <!-- Buttons for managing staff -->
+          <button class="button" onclick="openAddStaffPopup()">Add Staff</button>
+          <button class="button" onclick="openFireStaffPopup()">Fire Staff</button>
+        </div>
+        <!-- Placeholder for displaying current staff count -->
+        <div class="staff-info" id="staffInfo">
+          <h2>Staff Information</h2>
+          <p>Current Staff Count: <span id="currentStaff"></span></p>
+          <table id="staffTable">
+            <thead>
+              <tr>
+                <th>Staff ID</th>
+                <th>Staff Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Staff data will be populated dynamically by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add staff popup -->
+  <div id="addStaffPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closeAddStaffPopup()">&times;</span>
+      <h2>Add Staff</h2>
+      <form id="addStaffForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="phone">Phone:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+        <label for="role">Role:</label><br>
+        <input type="text" id="role" name="role" required><br><br>
+        <button type="button" onclick="addStaff()">Add</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Fire staff popup -->
+  <div id="fireStaffPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closeFireStaffPopup()">&times;</span>
+      <h2>Fire Staff</h2>
+      <form id="fireStaffForm">
+        <label for="staffId">Staff ID:</label><br>
+        <input type="text" id="staffId" name="staffId" required><br><br>
+        <button type="button" onclick="fireStaff()">Fire</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code to fetch data from staff.php and populate the staff table
+    document.addEventListener("DOMContentLoaded", function() {
+      fetchStaffData();
+    });
+
+    // Function to fetch staff data and populate the staff table
+    function fetchStaffData() {
+      fetch('staff.php')
+        .then(response => response.json())
+        .then(data => {
+          const staffData = data;
+          document.getElementById('currentStaff').innerText = staffData.length;
+          const staffTable = document.getElementById('staffTable').getElementsByTagName('tbody')[0];
+          staffTable.innerHTML = ''; // Clearing previous table data
+          staffData.forEach(staff => {
+            const row = staffTable.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+            const cell4 = row.insertCell(3);
+            const cell5 = row.insertCell(4);
+            cell1.innerHTML = staff.id;
+            cell2.innerHTML = staff.name;
+            cell3.innerHTML = staff.email;
+            cell4.innerHTML = staff.phone;
+            cell5.innerHTML = staff.role;
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Function to open add staff popup
+    function openAddStaffPopup() {
+      document.getElementById('addStaffPopup').style.display = 'block';
+    }
+
+    // Function to close add staff popup
+    function closeAddStaffPopup() {
+      document.getElementById('addStaffPopup').style.display = 'none';
+    }
+
+    // Function to open fire staff popup
+    function openFireStaffPopup() {
+      document.getElementById('fireStaffPopup').style.display = 'block';
+    }
+
+    // Function to close fire staff popup
+    function closeFireStaffPopup() {
+      document.getElementById('fireStaffPopup').style.display = 'none';
+    }
+
+    // Function to handle add staff form submission
+    function addStaff() {
+      const form = document.getElementById('addStaffForm');
+      fetch('staff.php', {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        // Reload the page after successful addition
+        location.reload();
+      })
+      .catch(error => {
+        console.error('Error adding staff:', error);
+      });
+    }
+
+    // Function to handle fire staff form submission
+    function fireStaff() {
+      const form = document.getElementById('fireStaffForm');
+      fetch('staff.php', {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        // Reload the page after successful deletion
+        location.reload();
+      })
+      .catch(error => {
+        console.error('Error firing staff:', error);
+      });
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        const logoutConfirmed = confirm("Are you sure you want to logout?");
+        if (logoutConfirmed) {
+          window.location.href = "admin.html";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
