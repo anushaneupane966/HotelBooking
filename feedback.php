@@ -17,8 +17,8 @@
         </div>
         
         <!-- Feedback form popup -->
-        <div id="feedbackFormPopup" class="popup">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <div id="feedbackFormPopup" class="popup" style="display: none;">
+            <form id="feedbackForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="text" name="name" placeholder="Your Name" required><br><br>
                 <input type="email" name="email" placeholder="Your Email" required><br><br>
                 <textarea name="feedback" placeholder="Your Feedback" rows="5" required></textarea><br><br>
@@ -32,6 +32,7 @@
         // JavaScript to handle feedback form popup
         var openFeedbackFormButton = document.getElementById("openFeedbackForm");
         var feedbackFormPopup = document.getElementById("feedbackFormPopup");
+        var feedbackForm = document.getElementById("feedbackForm");
 
         openFeedbackFormButton.onclick = function() {
             feedbackFormPopup.style.display = "block";
@@ -40,6 +41,16 @@
         window.onclick = function(event) {
             if (event.target == feedbackFormPopup) {
                 feedbackFormPopup.style.display = "none";
+            }
+        }
+
+        // JavaScript to show confirmation message and submit form
+        feedbackForm.onsubmit = function(event) {
+            event.preventDefault();
+            var confirmation = confirm("Are you sure you want to submit your feedback?");
+            if (confirmation) {
+                alert("Thank you for your feedback!");
+                feedbackForm.submit();
             }
         }
     </script>
@@ -71,7 +82,9 @@
         $feedback = $_POST["feedback"];
         
         if ($stmt->execute()) {
-            echo "<p>Thank you for your feedback!</p>";
+            // Redirect after successful submission
+            echo "<script>window.location.href = 'CustomerDashboard.html';</script>";
+            exit;
         } else {
             echo "<p>Error: " . $sql . "<br>" . $conn->error . "</p>";
         }

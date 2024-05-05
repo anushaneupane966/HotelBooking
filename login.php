@@ -18,24 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $entered_username = $_POST['username'];
     $entered_password = $_POST['password'];
 
-    // Validate username format (only alphabetic characters)
-    if (!ctype_alpha($entered_username)) {
-        // Invalid username format, display an error message
-        echo "<script>alert('Username should consist exclusively of alphabetic characters');</script>";
-        // Redirect the user back to index.html
-        echo "<script>window.location.href = 'index.html?error=Invalid%20username%20format';</script>";
-        exit(); // Stop further execution
-    }
-
-    // Validate password format (minimum 8 characters)
-    if (strlen($entered_password) < 8) {
-        // Invalid password format, display an error message
-        echo "<script>alert('Password should have a minimum of 8 characters');</script>";
-        // Redirect the user back to index.html
-        echo "<script>window.location.href = 'index.html?error=Invalid%20password%20format';</script>";
-        exit(); // Stop further execution
-    }
-
     // Query to check if the username and password match
     $sql = "SELECT * FROM signup WHERE Username='$entered_username' AND Password='$entered_password'";
     $result = $conn->query($sql);
@@ -46,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
         $_SESSION['username'] = $entered_username;
         // Redirect to dashboard or home page
-        header("Location: Customerdashboard.php");
+        header("Location: customerDashboard.html");
         exit();
     } else {
         // Invalid username or password, display an error message

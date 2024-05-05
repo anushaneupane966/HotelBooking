@@ -146,7 +146,7 @@
         <li><a href="access_feedback.html"><i class="fas fa-comment-alt"></i> Access Feedback</a></li>
         
         <div class="Logout">
-          <li><a href="delete_reservation.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
 
       </div>
         <!-- Add more menu items based on the provided content -->
@@ -157,7 +157,7 @@
         <h1>Welcome to Admin Dashboard</h1>
         <div class="button-container">
           <!-- Buttons for reservation actions -->
-          <a class="button" href="staff.php">Staff</a>
+          <a class="button" href="staff.html">Staff</a>
           <a class="button" href="refund.php">Manage Canceled/Refunded Reservations</a>
           <a class="button" href="view_historical_reservation.php">View Historical Booking Records</a>
         </div>
@@ -167,5 +167,17 @@
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        const logoutConfirmed = confirm("Are you sure you want to logout?");
+        if (logoutConfirmed) {
+          window.location.href = "admin.html";
+        }
+      });
+    });
+  </script>
 </body>
 </html>

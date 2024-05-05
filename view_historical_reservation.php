@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>View Reservation List</title>
+  <title>View Historical Booking Records</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     /* General styles */
@@ -19,7 +19,7 @@
       min-height: 100vh;
     }
 
-    /* Sidebar styles */
+    /* Updated styles for the sidebar */
     .sidebar {
       width: 250px;
       background-color: #2c3e50; /* Dark blue */
@@ -73,29 +73,51 @@
       border-bottom: none; /* Remove border from last item */
     }
 
-    /* Main content styles */
     .main-content {
       flex: 1;
       padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
+      background-image: url('bbg.jpg'); /* Background image related to restaurant */
+      background-size: cover;
+      background-position: center;
     }
 
-    .content-container {
-      max-width: 800px; /* Adjusted for wider content */
-      background-color: #fff;
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .content-container h1 {
-      margin-bottom: 20px;
       text-align: center;
     }
 
-    /* Table styles */
+    .overlay h1 {
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      margin: 5px;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
     .reservation-table {
       width: 100%;
       border-collapse: collapse;
@@ -106,15 +128,15 @@
       border-bottom: 1px solid #ddd;
       padding: 12px;
       text-align: left;
+      color: #fff;
     }
 
     .reservation-table th {
-      background-color: #f2f2f2;
-      color: #333;
+      background-color: #4CAF50; /* Dark green */
     }
 
     .reservation-table td {
-      color: #666;
+      color: white; /* Updated to white */
     }
 
     .reservation-table td:first-child {
@@ -124,7 +146,35 @@
     .reservation-table td:not(:first-child) {
       width: 20%;
     }
-    
+
+    .reservation-table tbody tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.1); /* Light background color for odd rows */
+    }
+
+    .bookings {
+      color: white;
+      padding-top: 10px;
+    }
+
+    .bookings li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .main-content {
+        padding: 20px 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -136,69 +186,88 @@
         <li><a href="view_reservation_list.php"><i class="fas fa-calendar-alt"></i> View Reservation List</a></li>
         <li><a href="access_feedback.html"><i class="fas fa-comment-alt"></i> Access Feedback</a></li>
         <div class="Logout">
-        <li><a href="delete_reservation.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-      </div>
+          <li><a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </div>
         <!-- Add more menu items based on the provided content -->
       </ul>
     </div>
     <div class="main-content">
-      <div class="content-container">
-        <h1>View Reservation List Page</h1>
-        <table class="reservation-table">
-          <thead>
-            <tr>
-              <th>Reservation ID</th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Guests</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            // Database configuration
-            $servername = "localhost";
-            $username = "astro";
-            $password = "Serena562181";
-            $database = "rdbs";
-            
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $database);
-            
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            
-            // Fetch reservation data from database where number of guests is more than 10
-            $sql = "SELECT id, guest_name, reservation_date, reservation_time, num_guests 
-                    FROM reservations_details 
-                    WHERE num_guests > 10";
-            $result = $conn->query($sql);
-            
-            // Check if there are any reservations
-            if ($result !== false && $result->num_rows > 0) {
-                // Output data of each row
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["id"] . "</td>";
-                    echo "<td>" . $row["guest_name"] . "</td>";
-                    echo "<td>" . $row["reservation_date"] . "</td>";
-                    echo "<td>" . $row["reservation_time"] . "</td>";
-                    echo "<td>" . $row["num_guests"] . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5'>No reservations found with more than 10 guests</td></tr>";
-            }
-            
-            // Close connection
-            $conn->close();
-            ?>
-          </tbody>
-        </table>
+      <div class="overlay">
+        <h1>View Historical Booking Records</h1>
+        <div class="button-container">
+          <!-- Button to view historical booking records -->
+          <a class="button" href="view_historical_reservation.php">View Historical Booking Records</a>
+        </div>
+        <div id="historicalBookings" class="bookings">
+          <!-- Historical booking records displayed in a table -->
+          <table class="reservation-table">
+            <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Number of Guests</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              // Database connection parameters
+              $servername = "localhost";
+              $username = "astro";
+              $password = "Serena562181";
+              $database = "rdbs";
+
+              // Create connection
+              $conn = new mysqli($servername, $username, $password, $database);
+
+              // Check connection
+              if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+              }
+
+              // Query to retrieve historical bookings
+              $sql = "SELECT * FROM reservations WHERE date < CURDATE() ORDER BY date DESC";
+              $result = $conn->query($sql);
+
+              // Check if there are any historical bookings
+              if ($result->num_rows > 0) {
+                  // Output data of each row
+                  while($row = $result->fetch_assoc()) {
+                      echo "<tr>";
+                      echo "<td>" . $row['id'] . "</td>";
+                      echo "<td>" . $row['name'] . "</td>";
+                      echo "<td>" . date('F j, Y', strtotime($row['date'])) . "</td>";
+                      echo "<td>" . date('g:i A', strtotime($row['time'])) . "</td>";
+                      echo "<td>" . $row['num_guests'] . "</td>";
+                      echo "<td>Done</td>"; // Updated status
+                      echo "</tr>";
+                  }
+              } else {
+                  echo "<tr><td colspan='6'>No historical bookings found.</td></tr>";
+              }
+
+              // Close connection
+              $conn->close();
+              ?>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        const logoutConfirmed = confirm("Are you sure you want to logout?");
+        if (logoutConfirmed) {
+          window.location.href = "admin.html";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
