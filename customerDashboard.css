@@ -48,7 +48,7 @@ body {
   }
   
   .sidebar-menu li:hover {
-    background-color: #00ff2a;
+    background-color: #95d09f;
   }
   
   .main-content {
@@ -63,7 +63,7 @@ body {
   }
   
   .overlay {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgb(247, 250, 247);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -78,7 +78,7 @@ body {
     top: 10%;
     left: 55%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: #fafafa;
     font-weight: bolder;
   }  
   
@@ -106,7 +106,7 @@ body {
   
   .button {
     padding: 5px;
-    background-color: #00ff08;
+    background-color: #63cf66;
     color: white;
     border: none;
     border-radius: 5px;
@@ -117,7 +117,7 @@ body {
   }
   
   .button:hover {
-    background-color: #4c05ff;
+    background-color: #98e6be;
   }
   
   @media (max-width: 768px) {
