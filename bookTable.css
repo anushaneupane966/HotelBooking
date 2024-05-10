@@ -1,20 +1,42 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    background-image: url('background.jpg'); /* Replace 'background-image.jpg' with the path to your image */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('cover.jpg');
     background-size: cover;
-    background-position: center;
 }
 
 #bookingForm {
-    background-color: #ffffff;
-    margin: 50px auto;
-    padding: 30px;
+    max-width: 800px;
+    margin: 100px auto;
+    background-color: #f9f9f9;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+#bookingForm .left-column{
+    width: 55%;
+    padding-right: 30px;
+}
+
+#bookingForm .right-column {
+    width: 45%;
+    margin-top: 12%;
+}
+
+h1 {
     text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+form {
+    display: grid;
+    gap: 20px;
 }
 
 input[type="text"],
@@ -24,102 +46,67 @@ input[type="date"],
 input[type="time"],
 input[type="number"] {
     width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
 }
 
-input[type="submit"] {
-    background-color: #4285f4;
-    color: #fff;
-    padding: 10px 20px;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus {
+    border-color: #4CAF50;
+}
+
+.payment-inputs input[type="text"] {
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #3367d6;
-}
-
-input[type="submit"]:focus {
     outline: none;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 10%;
 }
 
-.form-title {
-    margin-bottom: 30px;
-    font-size: 24px;
-    color: #333;
+button[type="submit"]:hover {
+    background-color: #45a049;
 }
 
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
+/* Additional styling for better visual presentation */
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="date"]::placeholder,
+input[type="time"]::placeholder,
+input[type="number"]::placeholder {
+    color: #999;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: #333;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-.form-group button {
-    background-color: #4285f4;
-    color: #13b536;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-}
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+    #bookingForm {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.form-group button:hover {
-    background-color: #3367d6;
-}
+    #bookingForm .left-column,
+    #bookingForm .right-column {
+        width: 100%;
+        padding: 0;
+    }
 
-.form-group button:focus {
-    outline: none;
-}
-
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group input[type="date"],
-.form-group input[type="time"],
-.form-group input[type="number"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="email"]:focus,
-.form-group input[type="tel"]:focus,
-.form-group input[type="date"]:focus,
-.form-group input[type="time"]:focus,
-.form-group input[type="number"]:focus {
-    outline: none;
-    border-color: #4285f4;
-}
-
-.error-message {
-    color: #ff0000;
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.success-message {
-    color: #4caf50;
-    margin-top: 5px;
-    font-size: 14px;
+    #bookingForm .left-column {
+        margin-bottom: 40px;
+    }
 }
