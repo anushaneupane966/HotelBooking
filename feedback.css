@@ -1,0 +1,72 @@
+/* feedback.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(175, 157, 157, 0.6); 
+    margin: 0;
+    padding: 0;
+}
+
+/* Content container styles */
+#content {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1 {
+    font-size: 28px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: calc(100% - 24px);
+    padding: 16px;
+    margin-bottom: 30px;
+    border: 2px solid #737171;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background-color: #f9f9f9; /* Change background color */
+}
+
+textarea {
+    height: 180px;
+}
+
+/* Button styles */
+.button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Error message styles */
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+    font-size: 16px;
+}
