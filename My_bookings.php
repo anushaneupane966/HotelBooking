@@ -25,7 +25,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<li>";
+        
         echo "<h3>Booking #" . $row['id'] . "</h3>";
         echo "<p>Name: " . $row['name'] . "</p>";
         echo "<p>Date: " . date('F j, Y', strtotime($row['date'])) . "</p>";
