@@ -4,64 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give Us Your Feedback</title>
-    <style>
-        /* Your existing CSS styles */
-    </style>
+  <link rel="stylesheet" href="feedback.css">
 </head>
 <body>
     <div id="content">
         <h1>Give Us Your Feedback</h1>
-        <div class="button-container">
-            <!-- Button to open the feedback form -->
-            <button class="button" id="openFeedbackForm">Provide Feedback</button>
-        </div>
-        
-        <!-- Feedback form popup -->
-        <div id="feedbackFormPopup" class="popup" style="display: none;">
-            <form id="feedbackForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <input type="text" name="name" placeholder="Your Name" required><br><br>
-                <input type="email" name="email" placeholder="Your Email" required><br><br>
-                <textarea name="feedback" placeholder="Your Feedback" rows="5" required></textarea><br><br>
-                <input type="hidden" name="submit_feedback" value="1">
-                <button class="button" type="submit">Submit Feedback</button>
-            </form>
-        </div>
+        <form id="feedbackForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <input type="text" name="name" placeholder="Your Name" required><br><br>
+            <input type="email" name="email" placeholder="Your Email" required><br><br>
+            <textarea name="feedback" placeholder="Your Feedback" rows="5" required></textarea><br><br>
+            <input type="hidden" name="submit_feedback" value="1">
+            <button class="button" type="submit">Submit Feedback</button>
+        </form>
     </div>
     
-    <script>
-        // JavaScript to handle feedback form popup
-        var openFeedbackFormButton = document.getElementById("openFeedbackForm");
-        var feedbackFormPopup = document.getElementById("feedbackFormPopup");
-        var feedbackForm = document.getElementById("feedbackForm");
-
-        openFeedbackFormButton.onclick = function() {
-            feedbackFormPopup.style.display = "block";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == feedbackFormPopup) {
-                feedbackFormPopup.style.display = "none";
-            }
-        }
-
-        // JavaScript to show confirmation message and submit form
-        feedbackForm.onsubmit = function(event) {
-            event.preventDefault();
-            var confirmation = confirm("Are you sure you want to submit your feedback?");
-            if (confirmation) {
-                alert("Thank you for your feedback!");
-                feedbackForm.submit();
-            }
-        }
-    </script>
-
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
         // Database connection parameters
-        $servername = "localhost"; // Change this to your MySQL server name
-        $username = "astro"; // Change this to your MySQL username
-        $password = "Serena562181"; // Change this to your MySQL password
-        $database = "rdbs"; // Change this to your MySQL database name
+        $servername = "localhost"; 
+        $username = "astro"; 
+        $password = "Serena562181"; 
+        $database = "rdbs"; 
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $database);
