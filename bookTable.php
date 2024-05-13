@@ -13,7 +13,10 @@
     <div id="bookingForm">
     
         <div class="left-column">
-        <h1>Booking Form</h1>
+        <div style="display: flex;">
+            <h1><a href="customerDashboard.php" style="text-decoration:none";><</a></h1>
+            <h1 style="padding-left:40px; ">Booking Form</h1>
+</div>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
