@@ -173,7 +173,7 @@
             }
             
             // Fetch reservation data from database
-            $sql = "SELECT id, name, date, time, num_guests FROM reservations WHERE date < CURDATE()";
+            $sql = "SELECT id, name, date, time, num_guests FROM reservations WHERE date > CURDATE()";
             $result = $conn->query($sql);
             
             // Check if there are any reservations
