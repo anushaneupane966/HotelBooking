@@ -1,41 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Dashboard</title>
-  <link rel="stylesheet" href="customerDashboard.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="customerDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<div class="wrapper">
-  <div class="sidebar">
-    <h3>Dashboard</h3>
-    <ul class="sidebar-menu">
-
-      <li><a href="customerDashboard.html"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>Dashboard</a></li>
-      <li><a href="Menu.html"><i class="fas fa-utensils" aria-hidden="true"></i>Menu</a></li>
-      <li><a href="Gallery.html"><i class="fas fa-images" aria-hidden="true"></i></i>Gallery</a></li>
-      <li><a href="My_bookings.html"><i class="fas fa-calendar-alt"></i>My bookings</a></li>
-      <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact US</a></li>
-      <li><a href="aboutUs.html"><i class="fas fa-info-circle"></i>About Us</a></li>
-      <!-- Add more menu items based on the provided content -->
-    </ul>
-  </div>
-  <div class="animated-text">
-    <h6>Restaurant Booking Dine-in system</h6>
-  </div>
-  <div class="main-content">
-    <div class="overlay">
-      <div class="button-container">
-        <a class="button" href="bookTable.php">Book a table</a>
-        <a class="button" href="feedback.php">Give feedback</a>
-      </div>
-      <!-- Add popup forms for reservation actions -->
-      <div id="addReservationFormPopup" class="popup"></div>
-      <div id="deleteReservationConfirmation" class="popup"></div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h3>Dashboard</h3>
+            <ul class="sidebar-menu">
+                <li><a href="customerDashboard.html"><i class="fas fa-tachometer-alt" aria-hidden="true"></i>Dashboard</a></li>
+                <li><a href="Menu.html"><i class="fas fa-utensils" aria-hidden="true"></i>Menu</a></li>
+                <li><a href="Gallery.html"><i class="fas fa-images" aria-hidden="true"></i></i> Gallery</a></li>
+                <li><a href="My_bookings.html"><i class="fas fa-calendar-alt"></i> My bookings</a></li>
+                <li><a href="Contact.html"><i class="fas fa-envelope"></i>Contact US</a></li>
+                <li><a href="aboutUs.html"><i class="fas fa-info-circle"></i>About Us</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="animated-text">
+                <span>W</span>
+                <span>e</span>
+                <span>l</span>
+                <span>c</span>
+                <span>o</span>
+                <span>m</span>
+                <span>e</span>
+                <span> </span>
+                <span>t</span>
+                <span>o</span>
+                <span> </span>
+                <span>R</span>
+                <span>e</span>
+                <span>s</span>
+                <span>t</span>
+                <span>a</span>
+                <span>u</span>
+                <span>r</span>
+                <span>a</span>
+                <span>n</span>
+                <span>t</span>
+            </div>
+            <div class="top-right-content" id="top-right-content">
+                <div class="user-avatar" id="user-avatar">
+                    <!-- Add your icon or avatar image here -->
+                    <img src="user-profile.png" alt="User Avatar">
+                </div>
+                <div class="user-info-container" id="user-info">
+                    <ul class="settings-menu" id="settings-menu">
+                      <li><button class="close-btn" id="close-btn">&times;</button></li>
+                      <li><span class="user-email" id="user-email"></span></li>
+                      <li><a href="index.html">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="button-container">
+                    <a class="button" href="bookTable.html">Book a table</a>
+                    <a class="button" href="feedback.php">Give feedback</a>
+                </div>
+                <div id="addReservationFormPopup" class="popup"></div>
+                <div id="deleteReservationConfirmation" class="popup"></div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
+    <script>
+        document.getElementById('user-avatar').addEventListener('click', function() {
+            var userInfo = document.getElementById('user-info');
+            if (userInfo.style.display === "none") {
+                userInfo.style.display = "block";
+            } else {
+                userInfo.style.display = "none";
+            }
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function() {
+            var userInfo = document.getElementById('user-info');
+            if (userInfo.style.display === "none") {
+                userInfo.style.display = "block";
+            } else {
+                userInfo.style.display = "none";
+            }
+        });
+
+        // Fetch user's email dynamically
+        var userEmail = ""; 
+        // Fetch the email using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                userEmail = xhr.responseText;
+                document.getElementById('user-email').textContent = userEmail;
+            }
+        };
+        xhr.open('GET', 'get_user_email.php', true);
+        xhr.send();
+    </script>
 </body>
 </html>

@@ -27,6 +27,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Start session and store user information if needed
         session_start();
         $_SESSION['username'] = $entered_username;
+
+        // Query to fetch user's email
+        $sql_email = "SELECT Email FROM signup WHERE Username='$entered_username'";
+        $result_email = $conn->query($sql_email);
+
+        if ($result_email->num_rows > 0) {
+            // Fetch the user's email
+            $row_email = $result_email->fetch_assoc();
+            $_SESSION['email'] = $row_email['Email'];
+        } else {
+            // Handle error
+            $_SESSION['email'] = ''; // Set email to empty string
+        }
+
         // Redirect to dashboard or home page
         header("Location: customerDashboard.html");
         exit();
