@@ -49,25 +49,26 @@ function fireStaff($conn, $id) {
     }
 }
 
-// Check if add staff form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["phone"]) && isset($_POST["role"])) {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $role = $_POST["role"];
+// Handle AJAX requests
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["phone"]) && isset($_POST["role"])) {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $role = $_POST["role"];
 
-    echo addStaff($conn, $name, $email, $phone, $role);
+        echo addStaff($conn, $name, $email, $phone, $role);
+    }
+
+    if (isset($_POST["staffId"])) {
+        $id = $_POST["staffId"];
+
+        echo fireStaff($conn, $id);
+    }
+} else {
+    // Fetch staff data
+    echo json_encode(fetchStaffData($conn));
 }
-
-// Check if fire staff form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["staffId"])) {
-    $id = $_POST["staffId"];
-
-    echo fireStaff($conn, $id);
-}
-
-// Fetch staff data
-echo json_encode(fetchStaffData($conn));
 
 $conn->close();
 ?>
