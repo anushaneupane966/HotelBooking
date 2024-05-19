@@ -14,22 +14,22 @@
     
         <div class="left-column">
         <div style="display: flex;">
-            <h1><a href="customerDashboard.php" style="text-decoration:none";><</a></h1>
-            <h1 style="padding-left:40px; ">Booking Form</h1>
-</div>
+            <h1><a href="customerDashboard.html" style="text-decoration:none;">&lt;</a></h1>
+            <h1 style="padding-left:40px;">Booking Form</h1>
+        </div>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="tel" name="phone" placeholder="Phone Number" required>
                 <input type="date" name="date" required>
                 <input type="time" name="time" required>
-                <input type="text" name="num_guests" placeholder="Number of Guests" required>
+                <input type="number" name="num_guests" placeholder="Number of Guests" required min="1">
             </div>
             <div class="right-column payment-inputs">
                 <!-- Payment fields -->
                 <input type="text" name="cardholder_name" placeholder="Card holder Name" required>
                 <input type="text" name="card_number" placeholder="Card Number (16-digits)" required>
-                <input type="text" name="amount" placeholder="Amount (Rs)" required>
+                <input type="number" name="amount" placeholder="Amount (Rs)" required min="1">
                 <input type="text" name="cvv" placeholder="pin (4-digits)" required>
                 <input type="hidden" name="book_table" value="1">
                 <button type="submit">Book A Table</button>
